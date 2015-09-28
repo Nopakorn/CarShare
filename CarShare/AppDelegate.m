@@ -16,9 +16,68 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+#ifdef __IPHONE_8_0
+    //Right, that is the point
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert) categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+#else
+    //register to receive notifications
+    UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:myTypes];
+#endif
+    
     return YES;
 }
+
+#ifdef __IPHONE_8_0
+-(void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings{
+    
+    [application registerForRemoteNotifications];
+    
+}
+-(void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler{
+    
+    if([identifier isEqualToString:@"declineAction"]){
+    }
+    else if([identifier isEqualToString:@"answerAction"]){}
+    
+}
+#endif
+
+-(void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    NSLog(@"%@",deviceToken);
+    self.deviceToken = deviceToken;
+    
+}
+
+-(void)MessageBox:(NSString *)title message:(NSString *)messageText{
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:messageText delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+    
+}
+
+
+-(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
+    
+    NSLog(@"Error FailToRegister: %@",error);
+}
+
+
+
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    
+    NSLog(@"%@", userInfo);
+    
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Notification" message:[[userInfo objectForKey:@"aps"]objectForKey:@"alert"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    
+    [alert show];
+    
+}
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -15,6 +15,10 @@
 		11782DC01BB528A7009130E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11782DBE1BB528A7009130E5 /* LaunchScreen.storyboard */; };
 		11782DCB1BB528A8009130E5 /* CarShareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 11782DCA1BB528A8009130E5 /* CarShareTests.m */; };
 		11782DD61BB528A8009130E5 /* CarShareUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 11782DD51BB528A8009130E5 /* CarShareUITests.m */; };
+		11782DE41BB52C4F009130E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11782DE31BB52C4F009130E5 /* UIKit.framework */; };
+		11782DE71BB533A7009130E5 /* LogInViewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 11782DE61BB533A7009130E5 /* LogInViewcontroller.m */; settings = {ASSET_TAGS = (); }; };
+		11782DEA1BB537D3009130E5 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 11782DE91BB537D3009130E5 /* User.m */; settings = {ASSET_TAGS = (); }; };
+		11782DED1BB54071009130E5 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11782DEC1BB54071009130E5 /* MenuViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,13 @@
 		11782DD11BB528A8009130E5 /* CarShareUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarShareUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11782DD51BB528A8009130E5 /* CarShareUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarShareUITests.m; sourceTree = "<group>"; };
 		11782DD71BB528A8009130E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11782DE31BB52C4F009130E5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		11782DE51BB533A7009130E5 /* LogInViewcontroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewcontroller.h; sourceTree = "<group>"; };
+		11782DE61BB533A7009130E5 /* LogInViewcontroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewcontroller.m; sourceTree = "<group>"; };
+		11782DE81BB537D3009130E5 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		11782DE91BB537D3009130E5 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		11782DEB1BB54071009130E5 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		11782DEC1BB54071009130E5 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11782DE41BB52C4F009130E5 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +93,7 @@
 		11782DA41BB528A7009130E5 = {
 			isa = PBXGroup;
 			children = (
+				11782DE31BB52C4F009130E5 /* UIKit.framework */,
 				11782DAF1BB528A7009130E5 /* CarShare */,
 				11782DC91BB528A8009130E5 /* CarShareTests */,
 				11782DD41BB528A8009130E5 /* CarShareUITests */,
@@ -110,6 +123,12 @@
 				11782DBE1BB528A7009130E5 /* LaunchScreen.storyboard */,
 				11782DC11BB528A7009130E5 /* Info.plist */,
 				11782DB01BB528A7009130E5 /* Supporting Files */,
+				11782DE51BB533A7009130E5 /* LogInViewcontroller.h */,
+				11782DE61BB533A7009130E5 /* LogInViewcontroller.m */,
+				11782DE81BB537D3009130E5 /* User.h */,
+				11782DE91BB537D3009130E5 /* User.m */,
+				11782DEB1BB54071009130E5 /* MenuViewController.h */,
+				11782DEC1BB54071009130E5 /* MenuViewController.m */,
 			);
 			path = CarShare;
 			sourceTree = "<group>";
@@ -271,6 +290,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11782DEA1BB537D3009130E5 /* User.m in Sources */,
+				11782DED1BB54071009130E5 /* MenuViewController.m in Sources */,
+				11782DE71BB533A7009130E5 /* LogInViewcontroller.m in Sources */,
 				11782DB81BB528A7009130E5 /* ViewController.m in Sources */,
 				11782DB51BB528A7009130E5 /* AppDelegate.m in Sources */,
 				11782DB21BB528A7009130E5 /* main.m in Sources */,
@@ -414,9 +436,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CarShare/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ssd.CarShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3659340a-6b34-468c-9ed8-9582164ca699";
 			};
 			name = Debug;
 		};
@@ -426,9 +450,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CarShare/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ssd.CarShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3659340a-6b34-468c-9ed8-9582164ca699";
 			};
 			name = Release;
 		};
