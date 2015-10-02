@@ -12,7 +12,10 @@
 #import "AppDelegate.h"
 
 @interface LogInViewcontroller : UIViewController<UIAlertViewDelegate,UITextFieldDelegate>
-
+{
+    UIAlertView* alertView;
+    UIAlertController *alert;
+}
 @property (weak, nonatomic) IBOutlet UITextField *textUserName;
 @property (weak, nonatomic) IBOutlet UITextField *textPassword;
 

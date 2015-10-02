@@ -8,8 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "User.h"
-@interface MenuViewController : UIViewController
+#import "ListVehicleViewController.h"
 
+@interface MenuViewController : UIViewController <UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate,UIWebViewDelegate>
+{
+    NSMutableArray *menuTable;
+    IBOutlet UIWebView *imageWebView;
+    IBOutlet UIImageView *profileWebView;
+}
 @property (strong, nonatomic) User * user;
+@property (weak, nonatomic) IBOutlet UILabel *username;
+@property(weak, nonatomic) IBOutlet UITableView *menuTableView;
+//@property(weak, nonatomic) IBOutlet UIWebView *imageWebView;
+
+
+-(IBAction)doSettingMenu:(id)sender;
 
 @end

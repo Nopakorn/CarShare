@@ -18,6 +18,7 @@
 @property(nonatomic, copy) NSString* siteURLString;
 @property(nonatomic, copy) NSString* deviceToken;
 @property(nonatomic, copy) NSString* strReply;
+@property(nonatomic, copy) NSString* memberPicUrl;
 
 @property NSString* responseResult;
 - (id)init;

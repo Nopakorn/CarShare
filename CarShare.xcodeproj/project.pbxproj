@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1144DE8A1BBA86DA00862AF5 /* ListVehicleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1144DE891BBA86DA00862AF5 /* ListVehicleViewController.m */; settings = {ASSET_TAGS = (); }; };
+		1144DE8D1BBA8DEF00862AF5 /* Vehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1144DE8C1BBA8DEF00862AF5 /* Vehicle.m */; settings = {ASSET_TAGS = (); }; };
+		116724AA1BBD3C4B006307A0 /* ListTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 116724A91BBD3C4B006307A0 /* ListTableCell.m */; settings = {ASSET_TAGS = (); }; };
+		116F8D541BBE279B008EAFD6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116F8D531BBE279B008EAFD6 /* MapKit.framework */; };
+		116F8D5A1BBE2F4C008EAFD6 /* VehicleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 116F8D591BBE2F4C008EAFD6 /* VehicleDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
+		116F8D601BBE49DD008EAFD6 /* VehicleDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 116F8D5F1BBE49DD008EAFD6 /* VehicleDetailCell.m */; settings = {ASSET_TAGS = (); }; };
+		116F8D631BBE7B0A008EAFD6 /* VehicleDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 116F8D621BBE7B0A008EAFD6 /* VehicleDetail.m */; settings = {ASSET_TAGS = (); }; };
 		11782DB21BB528A7009130E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 11782DB11BB528A7009130E5 /* main.m */; };
 		11782DB51BB528A7009130E5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11782DB41BB528A7009130E5 /* AppDelegate.m */; };
 		11782DB81BB528A7009130E5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11782DB71BB528A7009130E5 /* ViewController.m */; };
@@ -39,6 +46,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1144DE881BBA86DA00862AF5 /* ListVehicleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListVehicleViewController.h; sourceTree = "<group>"; };
+		1144DE891BBA86DA00862AF5 /* ListVehicleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListVehicleViewController.m; sourceTree = "<group>"; };
+		1144DE8B1BBA8DEF00862AF5 /* Vehicle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vehicle.h; sourceTree = "<group>"; };
+		1144DE8C1BBA8DEF00862AF5 /* Vehicle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vehicle.m; sourceTree = "<group>"; };
+		116724A81BBD3C4B006307A0 /* ListTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTableCell.h; sourceTree = "<group>"; };
+		116724A91BBD3C4B006307A0 /* ListTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTableCell.m; sourceTree = "<group>"; };
+		116F8D531BBE279B008EAFD6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		116F8D581BBE2F4C008EAFD6 /* VehicleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleDetailViewController.h; sourceTree = "<group>"; };
+		116F8D591BBE2F4C008EAFD6 /* VehicleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleDetailViewController.m; sourceTree = "<group>"; };
+		116F8D5E1BBE49DD008EAFD6 /* VehicleDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleDetailCell.h; sourceTree = "<group>"; };
+		116F8D5F1BBE49DD008EAFD6 /* VehicleDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleDetailCell.m; sourceTree = "<group>"; };
+		116F8D611BBE7B0A008EAFD6 /* VehicleDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleDetail.h; sourceTree = "<group>"; };
+		116F8D621BBE7B0A008EAFD6 /* VehicleDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleDetail.m; sourceTree = "<group>"; };
 		11782DAD1BB528A7009130E5 /* CarShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11782DB11BB528A7009130E5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		11782DB31BB528A7009130E5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -69,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				116F8D541BBE279B008EAFD6 /* MapKit.framework in Frameworks */,
 				11782DE41BB52C4F009130E5 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -93,6 +114,7 @@
 		11782DA41BB528A7009130E5 = {
 			isa = PBXGroup;
 			children = (
+				116F8D531BBE279B008EAFD6 /* MapKit.framework */,
 				11782DE31BB52C4F009130E5 /* UIKit.framework */,
 				11782DAF1BB528A7009130E5 /* CarShare */,
 				11782DC91BB528A8009130E5 /* CarShareTests */,
@@ -129,6 +151,18 @@
 				11782DE91BB537D3009130E5 /* User.m */,
 				11782DEB1BB54071009130E5 /* MenuViewController.h */,
 				11782DEC1BB54071009130E5 /* MenuViewController.m */,
+				1144DE881BBA86DA00862AF5 /* ListVehicleViewController.h */,
+				1144DE891BBA86DA00862AF5 /* ListVehicleViewController.m */,
+				1144DE8B1BBA8DEF00862AF5 /* Vehicle.h */,
+				1144DE8C1BBA8DEF00862AF5 /* Vehicle.m */,
+				116724A81BBD3C4B006307A0 /* ListTableCell.h */,
+				116724A91BBD3C4B006307A0 /* ListTableCell.m */,
+				116F8D581BBE2F4C008EAFD6 /* VehicleDetailViewController.h */,
+				116F8D591BBE2F4C008EAFD6 /* VehicleDetailViewController.m */,
+				116F8D5E1BBE49DD008EAFD6 /* VehicleDetailCell.h */,
+				116F8D5F1BBE49DD008EAFD6 /* VehicleDetailCell.m */,
+				116F8D611BBE7B0A008EAFD6 /* VehicleDetail.h */,
+				116F8D621BBE7B0A008EAFD6 /* VehicleDetail.m */,
 			);
 			path = CarShare;
 			sourceTree = "<group>";
@@ -290,9 +324,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				116F8D5A1BBE2F4C008EAFD6 /* VehicleDetailViewController.m in Sources */,
+				116F8D631BBE7B0A008EAFD6 /* VehicleDetail.m in Sources */,
+				116724AA1BBD3C4B006307A0 /* ListTableCell.m in Sources */,
 				11782DEA1BB537D3009130E5 /* User.m in Sources */,
+				1144DE8A1BBA86DA00862AF5 /* ListVehicleViewController.m in Sources */,
+				116F8D601BBE49DD008EAFD6 /* VehicleDetailCell.m in Sources */,
 				11782DED1BB54071009130E5 /* MenuViewController.m in Sources */,
 				11782DE71BB533A7009130E5 /* LogInViewcontroller.m in Sources */,
+				1144DE8D1BBA8DEF00862AF5 /* Vehicle.m in Sources */,
 				11782DB81BB528A7009130E5 /* ViewController.m in Sources */,
 				11782DB51BB528A7009130E5 /* AppDelegate.m in Sources */,
 				11782DB21BB528A7009130E5 /* main.m in Sources */,
@@ -525,6 +565,7 @@
 				11782DDC1BB528A8009130E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		11782DDD1BB528A8009130E5 /* Build configuration list for PBXNativeTarget "CarShareTests" */ = {
 			isa = XCConfigurationList;
@@ -533,6 +574,7 @@
 				11782DDF1BB528A8009130E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		11782DE01BB528A8009130E5 /* Build configuration list for PBXNativeTarget "CarShareUITests" */ = {
 			isa = XCConfigurationList;
@@ -541,6 +583,7 @@
 				11782DE21BB528A8009130E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -17,7 +17,7 @@
     self.textUserName.delegate = self;
     self.textPassword.delegate = self;
     
-
+    
     [self.navigationController setNavigationBarHidden:YES];
     
 }
@@ -29,46 +29,48 @@
                                   stringByReplacingOccurrencesOfString:@"<" withString:@""]stringByReplacingOccurrencesOfString:@">" withString:@""];
     NSLog(@"%@",deviceTokenStr);
     self.user.deviceToken = deviceTokenStr;
-    
+    //You need to get input from user
     [self.user setUsername:@"TEST" withPassword:@"TEST"];
+    
+    alert = [UIAlertController alertControllerWithTitle:nil message:@"Loading\n\n\n" preferredStyle:UIAlertControllerStyleAlert];
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    spinner.center = CGPointMake(130.5, 65.5);
+    spinner.color = [UIColor blackColor];
+    [alert.view addSubview:spinner];
+    [spinner startAnimating];
+    [self presentViewController:alert animated:NO completion:nil];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receivedLoadUser)
+                                                 name:@"GetUser" object:nil];
 }
 
 
-- (BOOL) receivedLoadUser
+- (void) receivedLoadUser
 {
     NSLog(@"in receivedLoadUser");
     if(self.user.strReply != nil)
     {
+        [alert dismissViewControllerAnimated:YES completion:nil];
+        [self performSegueWithIdentifier:@"LogIn" sender:nil];
         NSLog(@"Log in success");
-        return YES;
+    }else{
+                    UIAlertView *notPermitted =[[UIAlertView alloc]
+                                                initWithTitle:@"Alert"
+                                                message:@"User ID not valid"
+                                                delegate:nil
+                                                cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    [notPermitted show];
     }
-    return NO;
+    
 }
-
-//-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
-//{
-//    if ([identifier isEqualToString:@"SignIn"]) {
-//        
-//        
-//        if(![self receivedLoadUser]){
-//            
-//            UIAlertView *notPermitted =[[UIAlertView alloc]
-//                                        initWithTitle:@"Alert"
-//                                        message:@"User ID not valid"
-//                                        delegate:nil
-//                                        cancelButtonTitle:@"OK" otherButtonTitles: nil];
-//            [notPermitted show];
-//            return NO;
-//        }
-//    }
-//    return YES;
-//}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSLog(@"In segue");
 
-    if([segue.identifier isEqualToString:@"SignIn"])
+    if([segue.identifier isEqualToString:@"LogIn"])
     {
         MenuViewController *dest = [segue destinationViewController];
         dest.user = self.user;
@@ -92,6 +94,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+    
+    [self.navigationController setNavigationBarHidden:YES];
+
 }
 
 

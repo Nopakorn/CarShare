@@ -24,7 +24,6 @@
 - (void)setUsername:(NSString *)username withPassword:(NSString *) password
 {
     NSLog(@"In setUser");
-    //[self getMember];
     [self loadUser];
 }
 
@@ -40,19 +39,28 @@
     
     
     [req setHTTPMethod:@"GET"];
-    //[req setHTTPBody:[argString dataUsingEncoding:NSUTF8StringEncoding]];
     [req setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [req setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [req setValue:@"Albus" forHTTPHeaderField:@"Authorization"];
     
-    NSURLConnection* conn = [[NSURLConnection alloc] initWithRequest:req delegate:self];
-    
-    if(conn)
-    {
-        receivedData = [NSMutableData data];
-    }
-    else
-        NSLog(@"error");
+//    NSURLConnection* conn = [[NSURLConnection alloc] initWithRequest:req delegate:self];
+//    
+//    if(conn)
+//    {
+//        receivedData = [NSMutableData data];
+//    }
+//    else
+//        NSLog(@"error");
+    NSURLSession* session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    [[session dataTaskWithRequest:req completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
+        
+        
+        NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+        self.memberPicUrl = json[@"MemberPictureUrl"];
+        NSLog(@"pic url: %@",self.memberPicUrl);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"GetUser" object:self];
+        
+    }] resume];
     
 }
 
@@ -67,20 +75,22 @@
     [request setURL:[NSURL URLWithString:@"http://otr-carsharing.azurewebsites.net/api/member/login"]];
     [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
-    [request setValue:[NSString stringWithFormat:@"%d",[requestData length]] forHTTPHeaderField:@"Content-length"];
+    [request setValue:[NSString stringWithFormat:@"%lu",(unsigned long)[requestData length]] forHTTPHeaderField:@"Content-length"];
     [request setHTTPBody:requestData];
     
     NSURLSession* session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
         
         NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-        int code = [httpResponse statusCode];
-        NSLog(@"got response Status:%d",code);
+//        int code = [httpResponse statusCode];
+//        NSLog(@"got response Status:%d",code);
         
         NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
         NSLog(@"request reply: %@", requestReply);
         self.strReply = requestReply;
+        self.username = @"albus";
         
+        [self getMember];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"LoadUser" object:self];
         
     }] resume];
@@ -107,8 +117,8 @@
     NSLog(@"Success");
     
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:receivedData options:kNilOptions error:nil];    
+    
     NSString *responseString = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
-    NSLog(@"str:%@",responseString);
     NSLog(@"%@",json);
 }
 
