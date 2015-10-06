@@ -39,7 +39,8 @@
         [self loadMapView];
     }
     [self getInfo];
-    itemTable = [[NSMutableArray alloc] initWithObjects:@"Id",@"Fullname",@"MailAddress", nil];
+    itemTable = [[NSMutableArray alloc] initWithObjects:@"Id",@"Fullname",@"MailAddress",
+                 @"Rental Price",@"Mileage",@"Description",@"Vin",@"Status",@"Evaluation",nil];
     self.detailTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
@@ -47,8 +48,6 @@
 {
    
     NSString *vehicleId = [NSString stringWithFormat:@"%@",[self.detail objectForKey:@"VehicleId"]];
-     NSLog(@"GET INFO %@",vehicleId);
-    //self.vehicleDetail = [self.vehicleDetail initWithUser:self.user WithVehicleID:vehicleId];
     [self.vehicleDetail getInfo:self.user WithVehicleID:vehicleId];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receivedVehicleInfo)
@@ -57,7 +56,6 @@
 
 -(void)receivedVehicleInfo
 {
-    //NSLog(@"received info:%@",self.vehicleDetail.ownerId);
     [self.detailTableView reloadData];
 }
 
@@ -92,7 +90,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return [itemTable count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -106,13 +104,6 @@
     }
     
     cell.item.text = [itemTable objectAtIndex:indexPath.row];
-
-//    if(indexPath.row == 0){
-//        cell.value.text = self.vehicleDetail.ownerId;
-//    }
-//    if(indexPath.row == 1){
-//        cell.value.text = self.vehicleDetail.ownerFullName;
-//    }
     switch (indexPath.row) {
         case 0:
             cell.value.text = self.vehicleDetail.ownerId;
@@ -122,7 +113,25 @@
             break;
         case 2:
             cell.value.text = self.vehicleDetail.ownerMailAddress;
-            break;            
+            break;
+        case 3:
+            cell.value.text = self.vehicleDetail.rentalPrice;
+            break;
+        case 4:
+            cell.value.text = self.vehicleDetail.mileageLimit;
+            break;
+        case 5:
+            cell.value.text = self.vehicleDetail.descript;
+            break;
+        case 6:
+            cell.value.text = self.vehicleDetail.vin;
+            break;
+        case 7:
+            cell.value.text = self.vehicleDetail.shareStatus;
+            break;
+        case 8:
+            cell.value.text = self.vehicleDetail.evaluation;
+            break;
         default:
             break;
     }

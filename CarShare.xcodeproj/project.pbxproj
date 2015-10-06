@@ -116,7 +116,7 @@
 			children = (
 				116F8D531BBE279B008EAFD6 /* MapKit.framework */,
 				11782DE31BB52C4F009130E5 /* UIKit.framework */,
-				11782DAF1BB528A7009130E5 /* CarShare */,
+				11B62E981BC22F6800F524FF /* New Group */,
 				11782DC91BB528A8009130E5 /* CarShareTests */,
 				11782DD41BB528A8009130E5 /* CarShareUITests */,
 				11782DAE1BB528A7009130E5 /* Products */,
@@ -136,6 +136,9 @@
 		11782DAF1BB528A7009130E5 /* CarShare */ = {
 			isa = PBXGroup;
 			children = (
+				11B62E9B1BC23FDD00F524FF /* View */,
+				11B62E9A1BC2304400F524FF /* Controller */,
+				11B62E991BC22FD300F524FF /* Model */,
 				11782DB31BB528A7009130E5 /* AppDelegate.h */,
 				11782DB41BB528A7009130E5 /* AppDelegate.m */,
 				11782DB61BB528A7009130E5 /* ViewController.h */,
@@ -145,24 +148,6 @@
 				11782DBE1BB528A7009130E5 /* LaunchScreen.storyboard */,
 				11782DC11BB528A7009130E5 /* Info.plist */,
 				11782DB01BB528A7009130E5 /* Supporting Files */,
-				11782DE51BB533A7009130E5 /* LogInViewcontroller.h */,
-				11782DE61BB533A7009130E5 /* LogInViewcontroller.m */,
-				11782DE81BB537D3009130E5 /* User.h */,
-				11782DE91BB537D3009130E5 /* User.m */,
-				11782DEB1BB54071009130E5 /* MenuViewController.h */,
-				11782DEC1BB54071009130E5 /* MenuViewController.m */,
-				1144DE881BBA86DA00862AF5 /* ListVehicleViewController.h */,
-				1144DE891BBA86DA00862AF5 /* ListVehicleViewController.m */,
-				1144DE8B1BBA8DEF00862AF5 /* Vehicle.h */,
-				1144DE8C1BBA8DEF00862AF5 /* Vehicle.m */,
-				116724A81BBD3C4B006307A0 /* ListTableCell.h */,
-				116724A91BBD3C4B006307A0 /* ListTableCell.m */,
-				116F8D581BBE2F4C008EAFD6 /* VehicleDetailViewController.h */,
-				116F8D591BBE2F4C008EAFD6 /* VehicleDetailViewController.m */,
-				116F8D5E1BBE49DD008EAFD6 /* VehicleDetailCell.h */,
-				116F8D5F1BBE49DD008EAFD6 /* VehicleDetailCell.m */,
-				116F8D611BBE7B0A008EAFD6 /* VehicleDetail.h */,
-				116F8D621BBE7B0A008EAFD6 /* VehicleDetail.m */,
 			);
 			path = CarShare;
 			sourceTree = "<group>";
@@ -191,6 +176,53 @@
 				11782DD71BB528A8009130E5 /* Info.plist */,
 			);
 			path = CarShareUITests;
+			sourceTree = "<group>";
+		};
+		11B62E981BC22F6800F524FF /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				11782DAF1BB528A7009130E5 /* CarShare */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
+		11B62E991BC22FD300F524FF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				11782DE81BB537D3009130E5 /* User.h */,
+				11782DE91BB537D3009130E5 /* User.m */,
+				1144DE8B1BBA8DEF00862AF5 /* Vehicle.h */,
+				1144DE8C1BBA8DEF00862AF5 /* Vehicle.m */,
+				116F8D611BBE7B0A008EAFD6 /* VehicleDetail.h */,
+				116F8D621BBE7B0A008EAFD6 /* VehicleDetail.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		11B62E9A1BC2304400F524FF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				11782DE51BB533A7009130E5 /* LogInViewcontroller.h */,
+				11782DE61BB533A7009130E5 /* LogInViewcontroller.m */,
+				11782DEB1BB54071009130E5 /* MenuViewController.h */,
+				11782DEC1BB54071009130E5 /* MenuViewController.m */,
+				1144DE881BBA86DA00862AF5 /* ListVehicleViewController.h */,
+				1144DE891BBA86DA00862AF5 /* ListVehicleViewController.m */,
+				116F8D581BBE2F4C008EAFD6 /* VehicleDetailViewController.h */,
+				116F8D591BBE2F4C008EAFD6 /* VehicleDetailViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		11B62E9B1BC23FDD00F524FF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				116724A81BBD3C4B006307A0 /* ListTableCell.h */,
+				116724A91BBD3C4B006307A0 /* ListTableCell.m */,
+				116F8D5E1BBE49DD008EAFD6 /* VehicleDetailCell.h */,
+				116F8D5F1BBE49DD008EAFD6 /* VehicleDetailCell.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -27,6 +27,7 @@
 @property(nonatomic, copy) NSString* vin;
 @property(nonatomic, copy) NSString* odometer;
 @property(nonatomic, copy) NSString* shareStatus;
+@property(nonatomic, copy) NSString* evaluation;
 
 -(void)getInfo:(User *)user WithVehicleID:(NSString *)vehicleid;
 

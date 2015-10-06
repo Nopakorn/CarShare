@@ -81,7 +81,7 @@
     NSURLSession* session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
         
-        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+ //       NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
 //        int code = [httpResponse statusCode];
 //        NSLog(@"got response Status:%d",code);
         
@@ -120,6 +120,7 @@
     
     NSString *responseString = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
     NSLog(@"%@",json);
+    receivedData = nil;
 }
 
 @end

@@ -64,14 +64,21 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    //NSArray* json = [NSJSONSerialization JSONObjectWithData:receivedData options:kNilOptions error:nil];
     NSDictionary* res = [NSJSONSerialization JSONObjectWithData:receivedData options:kNilOptions error:nil];
     
     self.ownerId = [[res objectForKey:@"OwnerId"] stringValue];
     self.ownerFullName = [res objectForKey:@"OwnerFullName"];
     self.ownerMailAddress = [res objectForKey:@"OwnerMailAddress"];
     self.ownerPictureUrl = [res objectForKey:@"OwnerPictureUrl"];
-    self.rentalPrice = [res objectForKey:@"RentalPrice"];
+    self.rentalPrice = [[res objectForKey:@"RentalPrice"] stringValue];
+    if ([res objectForKey:@"MileageLimit"] != [NSNull null]) {
+        self.mileageLimit = [[res objectForKey:@"MileageLimit"] stringValue];
+    }
+    self.descript = [res objectForKey:@"Description"];
+    self.vin = [res objectForKey:@"Vin"];
+    self.shareStatus = [[res objectForKey:@"VehicleShareStatus"] stringValue];
+    self.evaluation = [[res objectForKey:@"EvaluationAverage"] stringValue];
+    
     NSLog(@"INDID :%@",self.rentalPrice);
 
     [[NSNotificationCenter defaultCenter] postNotificationName:@"LoadInfo" object:self];
