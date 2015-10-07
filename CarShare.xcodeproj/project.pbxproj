@@ -26,6 +26,7 @@
 		11782DE71BB533A7009130E5 /* LogInViewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 11782DE61BB533A7009130E5 /* LogInViewcontroller.m */; settings = {ASSET_TAGS = (); }; };
 		11782DEA1BB537D3009130E5 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 11782DE91BB537D3009130E5 /* User.m */; settings = {ASSET_TAGS = (); }; };
 		11782DED1BB54071009130E5 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11782DEC1BB54071009130E5 /* MenuViewController.m */; settings = {ASSET_TAGS = (); }; };
+		11A279B61BC4E01600F57151 /* VehicleListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A279B51BC4E01600F57151 /* VehicleListCell.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,8 @@
 		11782DE91BB537D3009130E5 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		11782DEB1BB54071009130E5 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		11782DEC1BB54071009130E5 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		11A279B41BC4E01600F57151 /* VehicleListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleListCell.h; sourceTree = "<group>"; };
+		11A279B51BC4E01600F57151 /* VehicleListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleListCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +224,8 @@
 				116724A91BBD3C4B006307A0 /* ListTableCell.m */,
 				116F8D5E1BBE49DD008EAFD6 /* VehicleDetailCell.h */,
 				116F8D5F1BBE49DD008EAFD6 /* VehicleDetailCell.m */,
+				11A279B41BC4E01600F57151 /* VehicleListCell.h */,
+				11A279B51BC4E01600F57151 /* VehicleListCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -358,6 +363,7 @@
 			files = (
 				116F8D5A1BBE2F4C008EAFD6 /* VehicleDetailViewController.m in Sources */,
 				116F8D631BBE7B0A008EAFD6 /* VehicleDetail.m in Sources */,
+				11A279B61BC4E01600F57151 /* VehicleListCell.m in Sources */,
 				116724AA1BBD3C4B006307A0 /* ListTableCell.m in Sources */,
 				11782DEA1BB537D3009130E5 /* User.m in Sources */,
 				1144DE8A1BBA86DA00862AF5 /* ListVehicleViewController.m in Sources */,

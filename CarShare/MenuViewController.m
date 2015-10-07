@@ -25,7 +25,24 @@
 //    profileWebView.layer.masksToBounds = YES;
 //    profileWebView.clipsToBounds = YES;
 //    profileWebView.image = user_image;
-//    
+    
+//    profileWebView.image = [UIImage imageNamed:@"placeholder.png"];
+//    NSLog(@"%@",self.user.memberPicUrl);
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
+//        NSLog(@"in load tread: URL %@",self.user.memberPicUrl);
+//        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.user.memberPicUrl]];
+//        if (data) {
+//            NSLog(@"Load data success");
+//            UIImage* user_image =[UIImage imageWithData:data];
+//            if (user_image) {
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    NSLog(@"back to main");
+//                    profileWebView.image = user_image;
+//                    NSLog(@"We done");
+//                });
+//            }
+//        }
+//    });
     menuTable = [[NSMutableArray alloc] initWithObjects:@"Rent",@"Schedule",@"List my vehicle",@"Manage my vehicle",@"Account", nil];
 
     self.menuTableView.dataSource =self;

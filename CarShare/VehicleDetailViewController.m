@@ -21,10 +21,11 @@
     return self;
 }
 
--(id)initWithCoordinate:(CLLocationCoordinate2D) coord{
-    coordinate=coord;
-    return self;
-}
+//-(id)initWithCoordinate:(CLLocationCoordinate2D) coord{
+//    NSLog(@"IN INITCOORDINATE");
+//    coordinate=coord;
+//    return self;
+//}
 
 - (void)viewDidLoad
 {
@@ -77,16 +78,6 @@
     [self.mapview addAnnotation:point];
 
 }
-
-
-- (NSString *)subtitle{
-    return nil;
-}
-
-- (NSString *)title{
-    return nil;
-}
-
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

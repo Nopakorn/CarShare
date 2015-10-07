@@ -27,8 +27,8 @@
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSString *deviceTokenStr = [[[appDelegate.deviceToken description]
                                   stringByReplacingOccurrencesOfString:@"<" withString:@""]stringByReplacingOccurrencesOfString:@">" withString:@""];
-    NSLog(@"%@",deviceTokenStr);
     self.user.deviceToken = deviceTokenStr;
+    
     //You need to get input from user
     [self.user setUsername:@"TEST" withPassword:@"TEST"];
     
@@ -39,7 +39,6 @@
     [alert.view addSubview:spinner];
     [spinner startAnimating];
     [self presentViewController:alert animated:NO completion:nil];
-    
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receivedLoadUser)
@@ -68,8 +67,6 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSLog(@"In segue");
-
     if([segue.identifier isEqualToString:@"LogIn"])
     {
         MenuViewController *dest = [segue destinationViewController];

@@ -7,7 +7,7 @@
 //
 
 #import "ListVehicleViewController.h"
-
+#import "VehicleListCell.h"
 @implementation ListVehicleViewController
 
 
@@ -67,7 +67,7 @@
             [self.vehiclePictureUrl addObject:x];
         }
     }
-    
+    NSLog(@"count %d",[self.vehiclePictureUrl count]);
     [self.listTableView reloadData];
     [self dismissViewControllerAnimated:YES completion:nil];
     
@@ -82,14 +82,35 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *simpleTableIdentifier = @"Cell";
-    UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    VehicleListCell *cell =(VehicleListCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
     if (cell ==nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+        cell = [[VehicleListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
+    cell.tag = indexPath.row;
+    cell.imageView.image = nil;
+    if([self.vehiclePictureUrl objectAtIndex:indexPath.row] != [NSNull null]){
+        NSLog(@"WtF:%@",[[[self.vehiclePictureUrl objectAtIndex:indexPath.row] objectAtIndex:0] objectForKey:@"Url"]);
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[[self.vehiclePictureUrl objectAtIndex:indexPath.row] objectAtIndex:0] objectForKey:@"Url"]]];
+            
+            if(data){
+                UIImage* imageVehicle = [UIImage imageWithData:data];
+                if (imageVehicle) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        UITableViewCell *updateCell = [self.listTableView cellForRowAtIndexPath:indexPath];
+                        if (updateCell) {
+                            updateCell.imageView.image = imageVehicle;
+                            [updateCell setNeedsLayout];
+                        }
+                    });
+                }
+            }
+        });
 
-
-    cell.textLabel.text = [self.vehicle.vehicleMaker objectAtIndex:indexPath.row];
-    cell.detailTextLabel.text = [self.vehicle.vehicleModel objectAtIndex:indexPath.row];
+    }
+    
+    cell.title.text = [self.vehicle.vehicleMaker objectAtIndex:indexPath.row];
+    cell.detail.text = [self.vehicle.vehicleModel objectAtIndex:indexPath.row];
     
     return cell;
 }

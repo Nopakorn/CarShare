@@ -14,7 +14,6 @@
 @interface ListVehicleViewController : UITableViewController<UITableViewDelegate,UITableViewDataSource>
 {
     UIAlertController *alert;
-    UIImage *imageCar;
 }
 @property (nonatomic) NSMutableArray  * vehicleMakerList;
 @property (nonatomic) NSMutableArray  * vehicleModelList;
@@ -22,9 +21,9 @@
 
 @property (strong, nonatomic) User * user;
 @property (strong, nonatomic) Vehicle * vehicle;
-//@property (strong, nonatomic) VehicleDetail * vehicleDetail;
+
 
 @property(weak, nonatomic) IBOutlet UITableView *listTableView;
-@property(weak, nonatomic) IBOutlet UIWebView *webView;
+
 
 @end
