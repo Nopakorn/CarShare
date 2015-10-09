@@ -18,31 +18,24 @@
     
     self.username.text = self.user.username;
 
-//    UIImage *user_image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.user.memberPicUrl]]];
-
-//    profileWebView.layer.borderWidth = 1.0f;
-//    profileWebView.layer.cornerRadius = 50;
-//    profileWebView.layer.masksToBounds = YES;
-//    profileWebView.clipsToBounds = YES;
-//    profileWebView.image = user_image;
+    profileWebView.layer.borderWidth = 1.0f;
+    profileWebView.layer.cornerRadius = 50;
+    profileWebView.layer.masksToBounds = YES;
+    profileWebView.clipsToBounds = YES;
     
-//    profileWebView.image = [UIImage imageNamed:@"placeholder.png"];
-//    NSLog(@"%@",self.user.memberPicUrl);
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
-//        NSLog(@"in load tread: URL %@",self.user.memberPicUrl);
-//        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.user.memberPicUrl]];
-//        if (data) {
-//            NSLog(@"Load data success");
-//            UIImage* user_image =[UIImage imageWithData:data];
-//            if (user_image) {
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    NSLog(@"back to main");
-//                    profileWebView.image = user_image;
-//                    NSLog(@"We done");
-//                });
-//            }
-//        }
-//    });
+    profileWebView.image = [UIImage imageNamed:@"placeholder.png"];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
+        NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.user.memberPicUrl]];
+        if (data) {
+            UIImage* user_image =[UIImage imageWithData:data];
+            if (user_image) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    profileWebView.image = user_image;
+                });
+            }
+        }
+    });
     menuTable = [[NSMutableArray alloc] initWithObjects:@"Rent",@"Schedule",@"List my vehicle",@"Manage my vehicle",@"Account", nil];
 
     self.menuTableView.dataSource =self;
@@ -63,6 +56,7 @@
 -(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     if(buttonIndex != [actionSheet cancelButtonIndex]){
+//       self.user = nil;
 //        [self.user setUsername:nil withPassword:nil];
         [self.navigationController popToRootViewControllerAnimated:YES];
         
@@ -110,7 +104,7 @@
     {
         ListVehicleViewController *dest = [segue destinationViewController];
         dest.user = self.user;
-
+        //[self.tableView deselectRowAtIndexPath:[self.listTableView indexPathForSelectedRow] animated:YES];
     }
 }
 

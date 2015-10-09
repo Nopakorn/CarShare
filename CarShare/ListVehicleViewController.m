@@ -28,7 +28,7 @@
         [alert.view addSubview:spinner];
         [spinner startAnimating];
         [self presentViewController:alert animated:NO completion:nil];
-        
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"LoadListVehicle" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(receivedListVehicle)
                                                      name:@"LoadListVehicle" object:nil];
@@ -67,7 +67,8 @@
             [self.vehiclePictureUrl addObject:x];
         }
     }
-    NSLog(@"count %d",[self.vehiclePictureUrl count]);
+    
+    NSLog(@"count %lu",(unsigned long)[self.vehiclePictureUrl count]);
     [self.listTableView reloadData];
     [self dismissViewControllerAnimated:YES completion:nil];
     
@@ -83,13 +84,16 @@
 {
     static NSString *simpleTableIdentifier = @"Cell";
     VehicleListCell *cell =(VehicleListCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    
     if (cell ==nil) {
         cell = [[VehicleListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
+    
     cell.tag = indexPath.row;
     cell.imageView.image = nil;
+    
     if([self.vehiclePictureUrl objectAtIndex:indexPath.row] != [NSNull null]){
-        NSLog(@"WtF:%@",[[[self.vehiclePictureUrl objectAtIndex:indexPath.row] objectAtIndex:0] objectForKey:@"Url"]);
+    
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:[[[self.vehiclePictureUrl objectAtIndex:indexPath.row] objectAtIndex:0] objectForKey:@"Url"]]];
             
@@ -106,7 +110,6 @@
                 }
             }
         });
-
     }
     
     cell.title.text = [self.vehicle.vehicleMaker objectAtIndex:indexPath.row];

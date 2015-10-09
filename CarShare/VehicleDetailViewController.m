@@ -21,12 +21,6 @@
     return self;
 }
 
-//-(id)initWithCoordinate:(CLLocationCoordinate2D) coord{
-//    NSLog(@"IN INITCOORDINATE");
-//    coordinate=coord;
-//    return self;
-//}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];

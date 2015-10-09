@@ -19,7 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *textUserName;
 @property (weak, nonatomic) IBOutlet UITextField *textPassword;
 
-@property (nonatomic,weak) NSString* fag;
+@property (nonatomic,weak) NSString* response;
 @property (strong, nonatomic) User * user;
 
 

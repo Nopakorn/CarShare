@@ -20,7 +20,7 @@
 @property(nonatomic, copy) NSString* strReply;
 @property(nonatomic, copy) NSString* memberPicUrl;
 
-@property NSString* responseResult;
+@property(nonatomic, copy) NSString* responseResult;
 - (id)init;
 - (void)setUsername:(NSString *)username withPassword:(NSString *) password;
 

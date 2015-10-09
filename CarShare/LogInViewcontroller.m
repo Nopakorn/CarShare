@@ -30,7 +30,8 @@
     self.user.deviceToken = deviceTokenStr;
     
     //You need to get input from user
-    [self.user setUsername:@"TEST" withPassword:@"TEST"];
+    //[self.user setUsername:@"TEST" withPassword:@"TEST"];
+    [self.user setUsername:self.textUserName.text withPassword:self.textPassword.text];
     
     alert = [UIAlertController alertControllerWithTitle:nil message:@"Loading\n\n\n" preferredStyle:UIAlertControllerStyleAlert];
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -40,6 +41,7 @@
     [spinner startAnimating];
     [self presentViewController:alert animated:NO completion:nil];
     
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"GetUser" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receivedLoadUser)
                                                  name:@"GetUser" object:nil];
@@ -48,19 +50,25 @@
 
 - (void) receivedLoadUser
 {
-    NSLog(@"in receivedLoadUser");
-    if(self.user.strReply != nil)
+    NSLog(@"in receivedLoadUser %@: STATUS:%@",self.user.strReply,self.user.responseResult);
+    if([self.user.responseResult isEqualToString:@"200"])
     {
-        [alert dismissViewControllerAnimated:YES completion:nil];
-        [self performSegueWithIdentifier:@"LogIn" sender:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self performSegueWithIdentifier:@"LogIn" sender:nil];
+            [alert dismissViewControllerAnimated:YES completion:nil];
+        });
         NSLog(@"Log in success");
     }else{
-                    UIAlertView *notPermitted =[[UIAlertView alloc]
-                                                initWithTitle:@"Alert"
-                                                message:@"User ID not valid"
-                                                delegate:nil
-                                                cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                    [notPermitted show];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [alert dismissViewControllerAnimated:YES completion:nil];
+            UIAlertView *notPermitted =[[UIAlertView alloc]
+                                        initWithTitle:@"Alert"
+                                        message:@"User ID not valid"
+                                        delegate:nil
+                                        cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [notPermitted show];
+        });
+        
     }
     
 }
@@ -72,7 +80,6 @@
         MenuViewController *dest = [segue destinationViewController];
         dest.user = self.user;
     }
-
 
 }
 
@@ -94,7 +101,8 @@
 }
 - (void)viewWillAppear:(BOOL)animated
 {
-    
+    self.textUserName.text = @"";
+    self.textPassword.text = @"";
     [self.navigationController setNavigationBarHidden:YES];
 
 }

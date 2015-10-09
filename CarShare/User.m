@@ -23,7 +23,9 @@
 
 - (void)setUsername:(NSString *)username withPassword:(NSString *) password
 {
-    NSLog(@"In setUser");
+    self.username = username;
+    self.password = password;
+
     [self loadUser];
 }
 
@@ -33,7 +35,6 @@
     NSLog(@"get member");
     NSString* urlString = [NSString stringWithFormat:@"%@",self.siteURLString];
     NSURL* url = [NSURL URLWithString:urlString];
-    NSLog(@"URL check:%@",url);
     
     NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
     
@@ -41,23 +42,14 @@
     [req setHTTPMethod:@"GET"];
     [req setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [req setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [req setValue:@"Albus" forHTTPHeaderField:@"Authorization"];
+    [req setValue:self.username forHTTPHeaderField:@"Authorization"];
     
-//    NSURLConnection* conn = [[NSURLConnection alloc] initWithRequest:req delegate:self];
-//    
-//    if(conn)
-//    {
-//        receivedData = [NSMutableData data];
-//    }
-//    else
-//        NSLog(@"error");
     NSURLSession* session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     [[session dataTaskWithRequest:req completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
         
         
         NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
         self.memberPicUrl = json[@"MemberPictureUrl"];
-        NSLog(@"pic url: %@",self.memberPicUrl);
         [[NSNotificationCenter defaultCenter] postNotificationName:@"GetUser" object:self];
         
     }] resume];
@@ -66,8 +58,8 @@
 
 - (void) loadUser
 {
-    NSString* jsonRequest = [NSString stringWithFormat:@"{\"MemberId\":\"albus\",\"Password\":\"Welcome1\",\"DeviceToken\":\"7ab630d5 7bd8a220 3c2837b8 b03c7b34 c0c97451 5312973f d3855e9c 99f0398b\"}"];
-    NSLog(@"check: %@",jsonRequest);
+    NSString* jsonRequest = [NSString stringWithFormat:@"{\"MemberId\":\"%@\",\"Password\":\"%@\",\"DeviceToken\":\"7ab630d5 7bd8a220 3c2837b8 b03c7b34 c0c97451 5312973f d3855e9c 99f0398b\"}",self.username,self.password];
+    NSLog(@"check: %@",self.deviceToken); 
     
     NSMutableURLRequest* request = [[NSMutableURLRequest alloc] init];
     NSData *requestData =[NSData dataWithBytes:[jsonRequest UTF8String] length:[jsonRequest length]];
@@ -81,18 +73,15 @@
     NSURLSession* session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error){
         
- //       NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-//        int code = [httpResponse statusCode];
-//        NSLog(@"got response Status:%d",code);
-        
+        NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+        int code = [httpResponse statusCode];
+        NSLog(@"got response Status:%d",code);
+        self.responseResult = [NSString stringWithFormat:@"%d",code];
         NSString *requestReply = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
         NSLog(@"request reply: %@", requestReply);
         self.strReply = requestReply;
-        self.username = @"albus";
         
         [self getMember];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"LoadUser" object:self];
-        
     }] resume];
 
 }
@@ -114,12 +103,10 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    NSLog(@"Success");
     
-    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:receivedData options:kNilOptions error:nil];    
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:receivedData options:kNilOptions error:nil];
     
     NSString *responseString = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",json);
     receivedData = nil;
 }
 
