@@ -29,7 +29,7 @@
     [self loadUser];
 }
 
-- (void) getMember
+- (void)getMember
 {
     
     NSLog(@"get member");
@@ -56,7 +56,7 @@
     
 }
 
-- (void) loadUser
+- (void)loadUser
 {
     NSString* jsonRequest = [NSString stringWithFormat:@"{\"MemberId\":\"%@\",\"Password\":\"%@\",\"DeviceToken\":\"7ab630d5 7bd8a220 3c2837b8 b03c7b34 c0c97451 5312973f d3855e9c 99f0398b\"}",self.username,self.password];
     NSLog(@"check: %@",self.deviceToken); 
@@ -103,7 +103,6 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:receivedData options:kNilOptions error:nil];
     
     NSString *responseString = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];

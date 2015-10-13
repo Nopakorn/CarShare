@@ -30,12 +30,12 @@
 }
 
 #ifdef __IPHONE_8_0
--(void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings{
+-(void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
     
     [application registerForRemoteNotifications];
     
 }
--(void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler{
+-(void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler {
     
     if([identifier isEqualToString:@"declineAction"]){
     }
@@ -51,7 +51,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
 }
 
--(void)MessageBox:(NSString *)title message:(NSString *)messageText{
+-(void)MessageBox:(NSString *)title message:(NSString *)messageText {
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:messageText delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
